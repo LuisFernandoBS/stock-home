@@ -1,0 +1,9 @@
+<h4>{{ nome() }}</h4>
+<mat-form-field>
+  <mat-label>{{ nome() }}</mat-label>
+  <mat-select>
+    @for (opcao of opcoes(); track opcao) {
+    <mat-option [value]="opcao.valor">{{ opcao.descricao }}</mat-option>
+    }
+  </mat-select>
+</mat-form-field>

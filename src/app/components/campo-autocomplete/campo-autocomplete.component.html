@@ -1,0 +1,19 @@
+<form class="form">
+  <h4>Nome do item</h4>
+  <mat-form-field class="form-field">
+    <mat-label>Nome do item</mat-label>
+    <input
+      type="text"
+      placeholder="Escolha ou descreva um item"
+      aria-label="Nome do item"
+      matInput
+      [formControl]="myControl"
+      [matAutocomplete]="auto"
+    />
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+      @for (option of filteredOptions | async; track option) {
+      <mat-option [value]="option">{{ option }}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+</form>

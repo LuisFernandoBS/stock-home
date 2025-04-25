@@ -1,0 +1,20 @@
+:host{
+  display: block;
+  width: 100%;
+}
+
+.form {
+  min-width: 150px;
+  width: 100%;
+}
+
+.form-field {
+  width: 100%;
+}
+  
+h4{
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+  margin-top: 0px;
+}

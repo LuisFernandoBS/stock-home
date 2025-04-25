@@ -1,0 +1,19 @@
+:host{
+    display: block;
+    height: 99.5%;
+}
+
+:host *{
+    color: whitesmoke;
+}
+
+mat-grid-list{
+    height: 100%;
+}
+
+mat-toolbar{
+    background: #4a2860;
+    height: 100%;
+    padding-left: 50px;
+    font-size: 27px;
+}

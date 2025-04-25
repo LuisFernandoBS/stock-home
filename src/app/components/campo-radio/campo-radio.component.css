@@ -1,0 +1,9 @@
+:host {
+    display: block;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.mat-mdc-radio-button ~ .mat-mdc-radio-button {
+    margin-left: 16px;
+}
