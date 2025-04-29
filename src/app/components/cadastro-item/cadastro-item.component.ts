@@ -6,11 +6,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { CampoAutocomplete } from '../campo-autocomplete/campo-autocomplete.component';
 import { CampoSelectComponent } from '../campo-select/campo-select.component';
 import { CampoRadioComponent } from '../campo-radio/campo-radio.component';
-
-interface Opcoes {
-  valor: number;
-  descricao: string;
-}
+import { Opcoes } from '../../shared/interfaces/opcoes.interface';
 
 @Component({
   selector: 'app-cadastro-item',
@@ -25,4 +21,35 @@ export class CadastroItemComponent {
     { valor: 2, descricao: 'Média' },
     { valor: 3, descricao: 'Alta' }
   ];
+
+  opcoesUnidades : Opcoes[] = [
+    { valor: 1, descricao: 'un' },
+    { valor: 2, descricao: 'kg' },
+    { valor: 3, descricao: 'g' },
+    { valor: 4, descricao: 'litro' }
+  ];
+
+  opcoesCategorias = [
+    { valor: 'pereciveis', descricao: 'Alimentos Perecíveis', icone: 'restaurant' },
+    { valor: 'nao_pereciveis', descricao: 'Alimentos Não Perecíveis', icone: 'local_grocery_store' },
+    { valor: 'bebidas', descricao: 'Bebidas', icone: 'local_bar' },
+    { valor: 'congelados', descricao: 'Congelados', icone: 'ac_unit' },
+    { valor: 'carnes', descricao: 'Carnes e Peixes', icone: 'set_meal' },
+    { valor: 'frutas_verduras', descricao: 'Frutas e Verduras', icone: 'spa' },
+    { valor: 'padaria', descricao: 'Padaria e Confeitaria', icone: 'bakery_dining' },
+    { valor: 'laticinios', descricao: 'Laticínios e Frios', icone: 'icecream' },
+    { valor: 'limpeza', descricao: 'Produtos de Limpeza', icone: 'cleaning_services' },
+    { valor: 'higiene', descricao: 'Higiene Pessoal', icone: 'health_and_safety' },
+    { valor: 'papelaria', descricao: 'Papelaria', icone: 'menu_book' },
+    { valor: 'petshop', descricao: 'Pet Shop', icone: 'pets' },
+    { valor: 'temperos', descricao: 'Temperos e Condimentos', icone: 'restaurant_menu' },
+    { valor: 'utilidades', descricao: 'Utilidades Domésticas', icone: 'home' },
+    { valor: 'cuidados_casa', descricao: 'Cuidados com a Casa', icone: 'roofing' },
+  ];
+
+  nomeItem: string = '';
+  quantidadeItem: number = 0;
+  unidadeItem: string = '';
+  categoriaItem: string = '';
+  prioridadeItem: number = 0;  
 }

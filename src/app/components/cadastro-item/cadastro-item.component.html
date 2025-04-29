@@ -1,11 +1,19 @@
-<h5>Cadastro de Item</h5>
+<h1 class="mat-h1">Cadastro de Item</h1>
 <campo-autocomplete></campo-autocomplete>
 <h4>Quantidade</h4>
 <mat-form-field class="campo-input">
   <mat-label>Quantidade</mat-label>
   <input type="number" matInput placeholder="Quantidade" value="" />
 </mat-form-field>
-<app-campo-select [nome]="'Unidade'"></app-campo-select>
-<app-campo-select [nome]="'Categoria'"></app-campo-select>
+<app-campo-select
+  [nome]="'Unidade'"
+  [opcoes]="opcoesUnidades"
+  [valorSelecionado]="unidadeItem"
+></app-campo-select>
+<app-campo-select
+  [nome]="'Categoria'"
+  [opcoes]="opcoesCategorias"
+  [valorSelecionado]="categoriaItem"
+></app-campo-select>
 <app-campo-radio [opcoes]="opcoesPrioridade"></app-campo-radio>
 <button id="btnSalvar" mat-raised-button color="primary">Salvar</button>

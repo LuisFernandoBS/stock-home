@@ -1,0 +1,51 @@
+mat-card{
+    margin-top: 20px;
+    border-radius: 8px;
+}
+
+mat-card.item-checked{
+    background-color: #ddcbfd;
+}
+
+mat-card:hover{
+    box-shadow: 0 4px 8px #673ab7;
+    border: 3px solid #673ab7;
+    transform: scale(1.05);
+}
+
+mat-card-title{
+    color:#673ab7;
+}
+
+mat-card.item-checked mat-card-title span{
+    text-decoration: line-through;
+}
+
+mat-icon{
+    color: #673ab7;
+    background-color: lightgray;
+    padding: 5px;
+    border-radius: 20px;
+}
+
+mat-icon.btn-status, mat-icon.btn-delete{
+    padding: 4px;
+    background-color: transparent;
+    border: 2px solid #673ab7;
+    cursor: pointer;
+}
+
+mat-icon.btn-delete{
+    margin-left: auto;
+}
+
+mat-icon.btn-status{
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+mat-icon.btn-status:hover,mat-icon.btn-delete:hover{
+    color: #e0e0e0;
+    background-color: #673ab7;
+    transform: scale(1.1);
+}

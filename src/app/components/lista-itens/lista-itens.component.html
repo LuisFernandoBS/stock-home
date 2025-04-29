@@ -1,0 +1,11 @@
+<div>
+  <h1 *ngIf="listaItens().length" class="mat-h1">Lista de Itens</h1>
+  <app-card-item
+    *ngFor="let item of listaItens(); let i = index"
+    [item]="item"
+    [index]="i"
+  ></app-card-item>
+  <div *ngIf="!listaItens().length" class="d-flex justify-content-center mt-3">
+    <h1 class="mat-h1">Nenhum item cadastrado!</h1>
+  </div>
+</div>

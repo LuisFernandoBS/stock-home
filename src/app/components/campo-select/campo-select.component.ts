@@ -3,11 +3,7 @@ import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
-
-interface Opcoes {
-  valor: string;
-  descricao: string;
-}
+import { Opcoes } from '../../shared/interfaces/opcoes.interface';
 
 @Component({
   selector: 'app-campo-select',
@@ -19,4 +15,5 @@ interface Opcoes {
 export class CampoSelectComponent {
   nome = input.required<string>();
   opcoes = input<Opcoes[]>([]);
+  valorSelecionado = input.required<string|number>();
 }

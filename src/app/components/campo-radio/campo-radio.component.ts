@@ -2,11 +2,7 @@ import {Component,input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
-
-interface Opcoes {
-  valor: number;
-  descricao: string;
-}
+import { Opcoes } from '../../shared/interfaces/opcoes.interface';
 
 @Component({
   selector: 'app-campo-radio',

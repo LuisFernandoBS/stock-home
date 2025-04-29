@@ -1,0 +1,22 @@
+<mat-card
+  appearance="outlined"
+  [ngClass]="[item()?.status ? 'item-checked' : '']"
+>
+  <mat-card-header>
+    <div mat-card-avatar>
+      <mat-icon>{{ item()?.icone }}</mat-icon>
+    </div>
+    <mat-card-title>
+      <span>
+        {{ item()?.nome || "Item sem Nome" }}
+      </span>
+    </mat-card-title>
+    <mat-card-subtitle>{{ item()?.categoria }}</mat-card-subtitle>
+    <mat-icon class="icon btn-delete" (click)="deletarItem()">delete</mat-icon>
+    <mat-icon
+      class="icon btn-status"
+      (click)="alterarStatusItem(item() || null)"
+      >{{ item()?.status ? "close" : "check" }}</mat-icon
+    >
+  </mat-card-header>
+</mat-card>

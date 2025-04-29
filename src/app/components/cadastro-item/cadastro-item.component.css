@@ -4,11 +4,10 @@
     display: block;
     padding-left: 50px;
     padding-right: 50px;
+    padding-top: 80px;
 }
 
-h5 {
-    font-size: 24px;
-    font-weight: 600;
+h1 {
     margin-bottom: 20px;
 }
 
