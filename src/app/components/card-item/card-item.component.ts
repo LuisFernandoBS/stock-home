@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {MatIconModule} from '@angular/material/icon';
 import { Item } from '../../shared/interfaces/item.interface';
-import { DELETAR_ITEM } from '../../shared/tokens/item.token';
+import { DELETAR_ITEM, ALTERAR_STATUS_ITEM } from '../../shared/tokens/item.token';
 
 @Component({
   selector: 'app-card-item',
@@ -17,15 +17,18 @@ export class CardItemComponent {
   item = input<Item>();
 
   private deletar = inject(DELETAR_ITEM);
+  private alterarStatus = inject(ALTERAR_STATUS_ITEM);
 
-  alterarStatusItem(item: Item|null): void {
-    if (!item) return;
-    item.status = !item.status;
+  alterarStatusItem(): void {
+    const indexValue = this.index();
+    if (indexValue !== undefined) {
+      this.alterarStatus(indexValue);
+    }
   }
 
   deletarItem(): void {
     const indexValue = this.index();
-    if (indexValue && indexValue !== undefined) {
+    if (indexValue !== undefined) {
       this.deletar(indexValue);
     }
   }

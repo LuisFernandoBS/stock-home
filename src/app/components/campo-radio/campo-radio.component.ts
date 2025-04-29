@@ -1,4 +1,4 @@
-import {Component,input} from '@angular/core';
+import {Component,input,EventEmitter,Output,Input} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {MatRadioModule} from '@angular/material/radio';
 import { FormsModule } from '@angular/forms';
@@ -13,5 +13,11 @@ import { Opcoes } from '../../shared/interfaces/opcoes.interface';
 })
 export class CampoRadioComponent {
   opcoes = input<Opcoes[]>([]);
-  valorSelecionado = 1;
+
+  @Input() valorSelecionado: number = 1;
+  @Output() valorSelecionadoChange = new EventEmitter<number>();
+
+  opcaoSelecionada(valor: number) {
+    this.valorSelecionadoChange.emit(valor);
+  }
 }

@@ -1,19 +1,30 @@
 <h1 class="mat-h1">Cadastro de Item</h1>
-<campo-autocomplete></campo-autocomplete>
+<campo-autocomplete [(valor)]="nomeItem"></campo-autocomplete>
 <h4>Quantidade</h4>
 <mat-form-field class="campo-input">
   <mat-label>Quantidade</mat-label>
-  <input type="number" matInput placeholder="Quantidade" value="" />
+  <input
+    type="number"
+    min="0"
+    matInput
+    placeholder="Quantidade"
+    [(ngModel)]="quantidadeItem"
+  />
 </mat-form-field>
 <app-campo-select
   [nome]="'Unidade'"
   [opcoes]="opcoesUnidades"
-  [valorSelecionado]="unidadeItem"
+  [(valorSelecionado)]="unidadeItem"
 ></app-campo-select>
 <app-campo-select
   [nome]="'Categoria'"
   [opcoes]="opcoesCategorias"
-  [valorSelecionado]="categoriaItem"
+  [(valorSelecionado)]="categoriaItem"
 ></app-campo-select>
-<app-campo-radio [opcoes]="opcoesPrioridade"></app-campo-radio>
-<button id="btnSalvar" mat-raised-button color="primary">Salvar</button>
+<app-campo-radio
+  [opcoes]="opcoesPrioridade"
+  [(valorSelecionado)]="prioridadeItem"
+></app-campo-radio>
+<button id="btnSalvar" mat-raised-button color="primary" (click)="salvar()">
+  Salvar
+</button>

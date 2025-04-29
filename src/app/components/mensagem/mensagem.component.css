@@ -1,0 +1,23 @@
+:host {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.example-pizza-party {
+  color: whitesmoke;
+}
+
+mat-icon {
+  background-color: transparent;
+  border: none;
+  color: whitesmoke;
+  cursor: pointer;
+  height: auto;
+}
+
+mat-icon:hover {
+  background-color: #757373;
+  border-radius: 15px;
+  color: whitesmoke;
+}

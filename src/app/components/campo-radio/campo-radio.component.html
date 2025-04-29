@@ -1,6 +1,7 @@
 <div>
   <mat-radio-group
     [(ngModel)]="valorSelecionado"
+    (ngModelChange)="opcaoSelecionada($event)"
     aria-label="Selecione uma opção"
     color="primary"
   >

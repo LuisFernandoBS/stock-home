@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, input, Output, EventEmitter} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -28,11 +28,19 @@ export class CampoAutocomplete implements OnInit {
   myControl = new FormControl('');
   options: string[] = [];
   filteredOptions: Observable<string[]> = new Observable<string[]>();
+  valor = input<string>('');
+
+  @Output() valorChange = new EventEmitter<string>();
+
 
   ngOnInit() {
     this.filteredOptions = this.myControl.valueChanges.pipe(
       startWith(''),
-      map(value => this._filter(value || '')),
+      map(value => {
+        const val = value || '';
+        this.valorChange.emit(val);
+        return this._filter(val);
+      }),
     );
   }
 

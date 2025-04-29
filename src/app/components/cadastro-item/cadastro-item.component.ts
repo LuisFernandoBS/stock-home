@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
@@ -7,15 +8,21 @@ import { CampoAutocomplete } from '../campo-autocomplete/campo-autocomplete.comp
 import { CampoSelectComponent } from '../campo-select/campo-select.component';
 import { CampoRadioComponent } from '../campo-radio/campo-radio.component';
 import { Opcoes } from '../../shared/interfaces/opcoes.interface';
+import { SALVAR_ITEM } from '../../shared/tokens/item.token';
+import { DISPARAR_MSG } from '../../shared/tokens/mensagem.token';
+
 
 @Component({
   selector: 'app-cadastro-item',
   standalone: true,
-  imports: [MatToolbarModule,CampoAutocomplete,CampoSelectComponent,MatInputModule,MatFormFieldModule,CampoRadioComponent,MatButtonModule],
+  imports: [FormsModule,MatToolbarModule,CampoAutocomplete,CampoSelectComponent,MatInputModule,MatFormFieldModule,CampoRadioComponent,MatButtonModule],
   templateUrl: './cadastro-item.component.html',
   styleUrl: './cadastro-item.component.css'
 })
 export class CadastroItemComponent {
+  private salvarItem = inject(SALVAR_ITEM);
+  private dispararMensagem = inject(DISPARAR_MSG);
+
   opcoesPrioridade : Opcoes[] = [
     { valor: 1, descricao: 'Baixa' },
     { valor: 2, descricao: 'Média' },
@@ -51,5 +58,38 @@ export class CadastroItemComponent {
   quantidadeItem: number = 0;
   unidadeItem: string = '';
   categoriaItem: string = '';
-  prioridadeItem: number = 0;  
+  prioridadeItem: number = 1;
+
+  validarCampos(): boolean {
+    console.log(this.nomeItem !== '', this.quantidadeItem, this.unidadeItem !== '', this.categoriaItem !== '')
+    return this.nomeItem !== '' && this.quantidadeItem > 0 && this.unidadeItem !== '' && this.categoriaItem !== '';
+  }
+
+  salvar() {
+    if (!this.validarCampos()) {
+      this.dispararMensagem('Preencha todos os campos obrigatórios!');
+      return;
+    }
+    this.salvarItem({
+      nome: this.nomeItem,
+      quantidade: this.quantidadeItem,
+      unidade: this.unidadeItem,
+      categoria: this.categoriaItem,
+      prioridade: this.prioridadeItem,
+      status: false,
+      icone: this.opcoesCategorias.find(c => c.valor === this.categoriaItem)?.icone || 'shopping_cart',
+    });
+
+    this.limparCampos();
+  }
+  
+  limparCampos() {
+    this.nomeItem = '';
+    this.quantidadeItem = 0;
+    this.unidadeItem = '';
+    this.categoriaItem = '';
+    this.prioridadeItem = 1;
+  }
+
+
 }

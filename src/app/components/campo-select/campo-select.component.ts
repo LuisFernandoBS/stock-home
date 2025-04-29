@@ -1,4 +1,4 @@
-import {Component,input} from '@angular/core';
+import {Component,input, Output, EventEmitter} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
@@ -15,5 +15,11 @@ import { Opcoes } from '../../shared/interfaces/opcoes.interface';
 export class CampoSelectComponent {
   nome = input.required<string>();
   opcoes = input<Opcoes[]>([]);
-  valorSelecionado = input.required<string|number>();
+
+  valorSelecionado = input<string | number>('');
+  @Output() valorSelecionadoChange = new EventEmitter<string | number>();
+
+  opcaoSelecionada(valor: string | number) {
+    this.valorSelecionadoChange.emit(valor);
+  }
 }
