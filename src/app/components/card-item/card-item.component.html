@@ -12,6 +12,12 @@
       </span>
     </mat-card-title>
     <mat-card-subtitle>{{ item()?.categoria }}</mat-card-subtitle>
+    <mat-chip-set aria-label="Atributos do item">
+      <mat-chip>{{ item()?.quantidade }} {{ item()?.unidade }}</mat-chip>
+      <mat-chip [class]="prioridadeItem.class">{{
+        prioridadeItem.nome
+      }}</mat-chip>
+    </mat-chip-set>
     <mat-icon class="icon btn-delete" (click)="deletarItem()">delete</mat-icon>
     <mat-icon class="icon btn-status" (click)="alterarStatusItem()">{{
       item()?.status ? "close" : "check"

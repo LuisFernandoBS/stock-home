@@ -39,6 +39,7 @@ export class HomeComponent {
     { nome: 'Item 4', unidade: 'kg', quantidade: 15, categoria: 'Carnes e Peixes', prioridade: 1, icone: 'set_meal',status: false },
   ];
 
+  
   salvarItem(item: Item): void {
     if (item === undefined) return;
     this.listaItens.push(item);

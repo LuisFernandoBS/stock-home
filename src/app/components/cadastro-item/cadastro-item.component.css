@@ -32,6 +32,64 @@ h4{
 }
 
 
+.div-prioridade{
+    display: flex;
+    width: 100%;
+}
+
+.div-prioridade h4{
+    align-self: center;
+    margin-bottom: 0px;
+}
+
+.btn-prioridade{
+    display: flex;
+    justify-content: space-around;
+    width: 60%;
+    margin-left: 20px;
+}
+
+.btn-prioridade button{
+    border-radius: 25px;
+    height: 30px;
+}
+
+.btn-prioridade button:hover{
+    animation: Aumentar 500ms ease 0s 1 normal forwards !important;
+    background-color: #fce08b;
+}
+
+.btn-prioridade button:first-child:hover{
+    background-color: #acf4db;
+}
+
+.btn-prioridade button:last-child:hover{
+    background-color: #f9af99;
+}
+
+.btn-prioridade button.btn-prioridade-selecionada{
+    background-color: #ffc107;
+}
+
+.btn-prioridade button:first-child.btn-prioridade-selecionada{
+    background-color: #74fbcc;
+}
+
+.btn-prioridade button:last-child.btn-prioridade-selecionada{
+    background-color: #ff5722;
+}
+
+@keyframes Aumentar {
+	0% {
+		transform: scale(1);
+	}
+
+	100% {
+		transform: scale(1.1);
+	}
+}
+
+
 @media (max-width: 1200px) {
     :host {
         padding-left: 20px;

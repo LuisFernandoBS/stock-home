@@ -27,24 +27,24 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 export class CampoAutocomplete implements OnInit {
   myControl = new FormControl('');
   options: string[] = [];
-  filteredOptions: Observable<string[]> = new Observable<string[]>();
+  opcoesFiltradas: Observable<string[]> = new Observable<string[]>();
   valor = input<string>('');
 
   @Output() valorChange = new EventEmitter<string>();
 
 
   ngOnInit() {
-    this.filteredOptions = this.myControl.valueChanges.pipe(
+    this.opcoesFiltradas = this.myControl.valueChanges.pipe(
       startWith(''),
       map(value => {
         const val = value || '';
         this.valorChange.emit(val);
-        return this._filter(val);
+        return this.filtrar(val);
       }),
     );
   }
 
-  private _filter(value: string): string[] {
+  private filtrar(value: string): string[] {
     const filterValue = value.toLowerCase();
 
     return this.options.filter(option => option.toLowerCase().includes(filterValue));

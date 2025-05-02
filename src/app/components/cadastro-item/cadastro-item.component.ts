@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatInputModule} from '@angular/material/input';
 import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { CampoAutocomplete } from '../campo-autocomplete/campo-autocomplete.component';
 import { CampoSelectComponent } from '../campo-select/campo-select.component';
-import { CampoRadioComponent } from '../campo-radio/campo-radio.component';
 import { Opcoes } from '../../shared/interfaces/opcoes.interface';
 import { SALVAR_ITEM } from '../../shared/tokens/item.token';
 import { DISPARAR_MSG } from '../../shared/tokens/mensagem.token';
@@ -15,7 +16,7 @@ import { DISPARAR_MSG } from '../../shared/tokens/mensagem.token';
 @Component({
   selector: 'app-cadastro-item',
   standalone: true,
-  imports: [FormsModule,MatToolbarModule,CampoAutocomplete,CampoSelectComponent,MatInputModule,MatFormFieldModule,CampoRadioComponent,MatButtonModule],
+  imports: [FormsModule,MatToolbarModule,CampoAutocomplete,CampoSelectComponent,MatInputModule,MatFormFieldModule,MatButtonModule,CommonModule,MatIconModule],
   templateUrl: './cadastro-item.component.html',
   styleUrl: './cadastro-item.component.css'
 })
@@ -30,10 +31,10 @@ export class CadastroItemComponent {
   ];
 
   opcoesUnidades : Opcoes[] = [
-    { valor: 1, descricao: 'un' },
-    { valor: 2, descricao: 'kg' },
-    { valor: 3, descricao: 'g' },
-    { valor: 4, descricao: 'litro' }
+    { valor: 'un', descricao: 'un' },
+    { valor: 'kg', descricao: 'kg' },
+    { valor: 'g', descricao: 'g' },
+    { valor: 'litro', descricao: 'litro' }
   ];
 
   opcoesCategorias = [
@@ -60,8 +61,11 @@ export class CadastroItemComponent {
   categoriaItem: string = '';
   prioridadeItem: number = 1;
 
+  selecionarPrioridade(valor:number|string): void {
+    this.prioridadeItem = Number(valor);
+  }
+  
   validarCampos(): boolean {
-    console.log(this.nomeItem !== '', this.quantidadeItem, this.unidadeItem !== '', this.categoriaItem !== '')
     return this.nomeItem !== '' && this.quantidadeItem > 0 && this.unidadeItem !== '' && this.categoriaItem !== '';
   }
 

@@ -9,9 +9,10 @@
       matInput
       [formControl]="myControl"
       [matAutocomplete]="auto"
+      [value]="valor()"
     />
     <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
-      @for (option of filteredOptions | async; track option) {
+      @for (option of opcoesFiltradas | async; track option) {
       <mat-option [value]="option">{{ option }}</mat-option>
       }
     </mat-autocomplete>

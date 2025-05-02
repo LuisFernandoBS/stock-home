@@ -21,10 +21,22 @@
   [opcoes]="opcoesCategorias"
   [(valorSelecionado)]="categoriaItem"
 ></app-campo-select>
-<app-campo-radio
-  [opcoes]="opcoesPrioridade"
-  [(valorSelecionado)]="prioridadeItem"
-></app-campo-radio>
+<div class="div-prioridade">
+  <h4>Prioridade:</h4>
+  <div class="btn-prioridade">
+    <button
+      mat-flat-button
+      *ngFor="let prioridade of opcoesPrioridade; let i = index"
+      (click)="selecionarPrioridade(prioridade.valor)"
+      [ngClass]="{
+        'btn-prioridade-selecionada': prioridade.valor === prioridadeItem
+      }"
+    >
+      {{ prioridade.descricao }}
+      <mat-icon *ngIf="prioridade.valor === prioridadeItem">check</mat-icon>
+    </button>
+  </div>
+</div>
 <button id="btnSalvar" mat-raised-button color="primary" (click)="salvar()">
   Salvar
 </button>

@@ -49,3 +49,15 @@ mat-icon.btn-status:hover,mat-icon.btn-delete:hover{
     background-color: #673ab7;
     transform: scale(1.1);
 }
+
+.baixa-prioridade{
+    background-color: #74fbcc!important;
+}
+
+.media-prioridade{
+    background-color: #ffc107!important;
+}
+
+.alta-prioridade{
+    background-color: #ff5722!important;
+}
