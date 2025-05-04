@@ -1,11 +1,19 @@
 <div>
-  <h1 *ngIf="listaItens().length" class="mat-h1">Lista de Itens</h1>
-  <app-card-item
-    *ngFor="let item of listaItens(); let i = index"
-    [item]="item"
-    [index]="i"
-  ></app-card-item>
-  <div *ngIf="!listaItens().length" class="d-flex justify-content-center mt-3">
+  <h1 *ngIf="listaItens.length" class="mat-h1 titulo-lista">Lista de Itens</h1>
+  <h4>Filtro</h4>
+  <mat-form-field class="campo-input">
+    <mat-label>Nome do item que deseja buscar</mat-label>
+    <input type="search" matInput [(ngModel)]="campoFiltroCards" />
+  </mat-form-field>
+
+  <ng-container *ngFor="let item of listaItensFiltrada; let i = index">
+    <app-card-item
+      *ngIf="item.filtrado"
+      [item]="item"
+      [index]="i"
+    ></app-card-item>
+  </ng-container>
+  <div *ngIf="!listaItens.length" class="d-flex justify-content-center mt-3">
     <h1 class="mat-h1">Nenhum item cadastrado!</h1>
   </div>
 </div>

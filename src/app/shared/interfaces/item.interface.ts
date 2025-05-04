@@ -6,4 +6,5 @@ export interface Item {
     categoria: string;
     prioridade: number;
     status: boolean;
+    filtrado?: boolean;
 }

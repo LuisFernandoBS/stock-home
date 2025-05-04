@@ -1,4 +1,4 @@
-import {Component, OnInit, input, Output, EventEmitter} from '@angular/core';
+import {Component, OnInit, input, Input, Output, EventEmitter} from '@angular/core';
 import {FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {Observable} from 'rxjs';
 import {map, startWith} from 'rxjs/operators';
@@ -25,10 +25,22 @@ import {MatFormFieldModule} from '@angular/material/form-field';
   ],
 })
 export class CampoAutocomplete implements OnInit {
+  private _opcoes: string[] = [];
   myControl = new FormControl('');
-  options: string[] = [];
   opcoesFiltradas: Observable<string[]> = new Observable<string[]>();
   valor = input<string>('');
+
+
+  @Input()
+  set opcoes(listaOpcoesAtualizada: string[]) {
+    this._opcoes = listaOpcoesAtualizada || [];
+    const valorAtual = this.myControl.value || '';
+    this.myControl.setValue(valorAtual);
+  }
+
+  get opcoes(): string[] {
+    return this._opcoes;
+  }
 
   @Output() valorChange = new EventEmitter<string>();
 
@@ -47,6 +59,6 @@ export class CampoAutocomplete implements OnInit {
   private filtrar(value: string): string[] {
     const filterValue = value.toLowerCase();
 
-    return this.options.filter(option => option.toLowerCase().includes(filterValue));
+    return this._opcoes.filter(option => option.toLowerCase().includes(filterValue));
   }
 }
