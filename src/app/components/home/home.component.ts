@@ -60,7 +60,9 @@ export class HomeComponent {
 
   alterarStatus(index: number|undefined): void {
     if (index === undefined) return;
-    this.listaItens[index].status = !this.listaItens[index].status;
+    const novaLista = [...this.listaItens];
+    novaLista[index].status = !novaLista[index].status;
+    this.listaItens = novaLista;
     this.reorganizarListaItens();
   }
 
