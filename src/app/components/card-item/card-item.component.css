@@ -26,6 +26,8 @@ mat-icon{
     background-color: lightgray;
     padding: 5px;
     border-radius: 20px;
+    min-width: 24px;
+    min-height: 24px;
 }
 
 mat-icon.btn-status, mat-icon.btn-delete{

@@ -3,13 +3,14 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CadastroItemComponent } from '../cadastro-item/cadastro-item.component';
 import { ListaItensComponent } from '../lista-itens/lista-itens.component';
+import { EstatisticasComponent } from '../estatisticas/estatisticas.component';
 import { Item } from '../../shared/interfaces/item.interface';
 import { DELETAR_ITEM, ALTERAR_STATUS_ITEM, SALVAR_ITEM } from '../../shared/tokens/item.token';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatGridListModule,MatToolbarModule,CadastroItemComponent,ListaItensComponent],
+  imports: [MatGridListModule,MatToolbarModule,CadastroItemComponent,ListaItensComponent,EstatisticasComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   providers: [
