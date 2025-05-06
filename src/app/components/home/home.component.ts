@@ -7,7 +7,9 @@ import { ListaItensComponent } from '../lista-itens/lista-itens.component';
 import { EstatisticasComponent } from '../estatisticas/estatisticas.component';
 import { Item, Categoria } from '../../shared/interfaces/item.interface';
 import { TamanhoTelaService } from '../../shared/services/tamanho-tela.service';
+import { StockDbService } from '../../shared/services/stock-db.service';
 import { DELETAR_ITEM, ALTERAR_STATUS_ITEM, SALVAR_ITEM } from '../../shared/tokens/item.token';
+import { FINALIZAR } from '../../shared/tokens/stock.token';
 
 @Component({
   selector: 'app-home',
@@ -31,13 +33,15 @@ import { DELETAR_ITEM, ALTERAR_STATUS_ITEM, SALVAR_ITEM } from '../../shared/tok
       useFactory: (component: HomeComponent) => component.deletarItem.bind(component),
       deps: [HomeComponent]
     },
+    {
+      provide: FINALIZAR,
+      useFactory: (component: HomeComponent) => component.finalizar.bind(component),
+      deps: [HomeComponent]
+    },
   ]
 })
 
 export class HomeComponent {
-
-  tamanho: number = 0;
-
   colunasTitulo: number = 4;
   colunasAbaEstatisticas: number = 1;
   colunasAbaCadastro: number = 2;
@@ -45,14 +49,14 @@ export class HomeComponent {
 
   abaEstatisticasLateral: boolean = true;
 
-  constructor(private tamanhoTelaService: TamanhoTelaService) {}
+  constructor(private tamanhoTelaService: TamanhoTelaService, private stockService: StockDbService) {}
 
-  ngOnInit() {
+
+  async ngOnInit() {
     this.tamanhoTelaService.tamanhoTela$.subscribe(t => {
-      this.tamanho = t;
       this.ajustarColunas(t);
-      console.log('Tamanho da tela:', t);
     });
+    let historico = await this.stockService.obterHistorico();
   }
 
   listaItens : Item[] = [
@@ -113,6 +117,23 @@ export class HomeComponent {
       }
       return Number(a.status) - Number(b.status);
     });
+  }
+
+  async finalizar() {
+    const agora = new Date();
+    const dataFormatada = agora.toLocaleDateString('pt-BR');
+    const hora = agora.toLocaleTimeString('pt-BR').replace(/:/g, '-'); 
+    
+    const idUnico = `${dataFormatada} ${hora} ${Date.now()}`;
+  
+    try {
+      await this.stockService.salvarLista(idUnico, this.listaItens, dataFormatada, hora);
+  
+      let historico = await this.stockService.obterHistorico();
+      this.listaItens = [];
+    } catch (error) {
+      console.error('Erro ao salvar lista:', error);
+    }
   }
 
   ajustarColunas(tamanhoTela:number) {

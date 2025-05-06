@@ -5,3 +5,13 @@
   [listaItens]="listaItens()"
   [refCategorias]="categorias()"
 ></app-painel-categorias>
+<button
+  id="btnFinalizar"
+  mat-raised-button
+  color="primary"
+  (click)="abrirDialog()"
+  *ngIf="listaItens().length"
+>
+  <mat-icon>check_circle</mat-icon>
+  Finalizar
+</button>

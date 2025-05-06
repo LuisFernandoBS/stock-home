@@ -33,6 +33,9 @@ export class ListaItensComponent {
     this._listaItens = listaAtualizada.map(item => {
       return { ...item, filtrado: true };
     });
+    if (listaAtualizada.length === 0) {
+      this._campoFiltroCards = "";
+    }
     this.filtrarListaItens(this._campoFiltroCards);
   }
 
