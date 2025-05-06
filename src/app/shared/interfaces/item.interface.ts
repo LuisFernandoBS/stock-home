@@ -8,3 +8,9 @@ export interface Item {
     status: boolean;
     filtrado?: boolean;
 }
+
+export interface Categoria {
+    descricao: string;
+    icone: string;
+    valor: string;
+}

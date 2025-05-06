@@ -1,6 +1,6 @@
 import { Component, input } from '@angular/core';
 import { PainelCategoriasComponent } from '../painel-categorias/painel-categorias.component';
-import { Item } from '../../shared/interfaces/item.interface';
+import { Item, Categoria } from '../../shared/interfaces/item.interface';
 
 
 @Component({
@@ -12,4 +12,5 @@ import { Item } from '../../shared/interfaces/item.interface';
 })
 export class EstatisticasComponent {
   listaItens = input<Item[]>([]);
+  categorias = input<Categoria[]>([]);
 }
