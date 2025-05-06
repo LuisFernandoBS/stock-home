@@ -1,16 +1,18 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { CadastroItemComponent } from '../cadastro-item/cadastro-item.component';
 import { ListaItensComponent } from '../lista-itens/lista-itens.component';
 import { EstatisticasComponent } from '../estatisticas/estatisticas.component';
 import { Item, Categoria } from '../../shared/interfaces/item.interface';
+import { TamanhoTelaService } from '../../shared/services/tamanho-tela.service';
 import { DELETAR_ITEM, ALTERAR_STATUS_ITEM, SALVAR_ITEM } from '../../shared/tokens/item.token';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [MatGridListModule,MatToolbarModule,CadastroItemComponent,ListaItensComponent,EstatisticasComponent],
+  imports: [MatGridListModule,MatToolbarModule,CadastroItemComponent,ListaItensComponent,EstatisticasComponent,CommonModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
   providers: [
@@ -33,6 +35,26 @@ import { DELETAR_ITEM, ALTERAR_STATUS_ITEM, SALVAR_ITEM } from '../../shared/tok
 })
 
 export class HomeComponent {
+
+  tamanho: number = 0;
+
+  colunasTitulo: number = 4;
+  colunasAbaEstatisticas: number = 1;
+  colunasAbaCadastro: number = 2;
+  colunasAbaLista: number = 2;
+
+  abaEstatisticasLateral: boolean = true;
+
+  constructor(private tamanhoTelaService: TamanhoTelaService) {}
+
+  ngOnInit() {
+    this.tamanhoTelaService.tamanhoTela$.subscribe(t => {
+      this.tamanho = t;
+      this.ajustarColunas(t);
+      console.log('Tamanho da tela:', t);
+    });
+  }
+
   listaItens : Item[] = [
     { nome: 'Item 1', unidade: 'und', quantidade: 10, categoria: 'Bebidas', prioridade: 1, icone: 'local_bar',status: false },
     { nome: 'Item 2', unidade: 'und', quantidade: 5, categoria: 'Alimentos Perecíveis', prioridade: 2, icone: 'restaurant',status: false },
@@ -62,7 +84,6 @@ export class HomeComponent {
     { valor: 'utilidades', descricao: 'Utilidades Domésticas', icone: 'home' },
     { valor: 'cuidados_casa', descricao: 'Cuidados com a Casa', icone: 'roofing' },
   ];
-
   
   salvarItem(item: Item): void {
     if (item === undefined) return;
@@ -92,6 +113,30 @@ export class HomeComponent {
       }
       return Number(a.status) - Number(b.status);
     });
+  }
+
+  ajustarColunas(tamanhoTela:number) {
+    if (tamanhoTela < 1300) {
+      this.colunasTitulo = 5;
+      this.colunasAbaEstatisticas = 5;
+      this.colunasAbaCadastro = 5;
+      this.colunasAbaLista = 5;
+      this.abaEstatisticasLateral = false;
+      return;     
+    }else if (tamanhoTela < 1400) {
+      this.colunasTitulo = 5;
+      this.colunasAbaEstatisticas = 5;
+      this.colunasAbaCadastro = 2;
+      this.colunasAbaLista = 3;
+      this.abaEstatisticasLateral = false;
+      return;
+    }
+
+    this.colunasTitulo = 4;
+    this.colunasAbaEstatisticas = 1;
+    this.colunasAbaCadastro = 2;
+    this.colunasAbaLista = 2;
+    this.abaEstatisticasLateral = true;
   }
 
 }

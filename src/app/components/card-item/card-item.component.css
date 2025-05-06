@@ -63,3 +63,12 @@ mat-icon.btn-status:hover,mat-icon.btn-delete:hover{
 .alta-prioridade{
     background-color: #ff5722!important;
 }
+
+@media (max-width: 1400px) {
+    mat-card-title {
+        font-size: 16px !important;
+    }
+    mat-card-subtitle {
+        font-size: 13px !important;
+    }
+}
