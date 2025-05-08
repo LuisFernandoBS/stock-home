@@ -13,7 +13,7 @@
 
 ## 🎯 Funcionalidades
 
-- Cadastro de itens com nome, categoria e/ou quantidade (personalizável).
+- Cadastro de itens com nome, categoria, quantidade e prioridade.
 - Visualização em tempo real da lista atual de compras.
 - Marcação de itens adquiridos com um simples clique.
 - Finalização da lista com salvamento automático no histórico.
