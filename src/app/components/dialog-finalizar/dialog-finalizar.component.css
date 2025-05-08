@@ -1,0 +1,11 @@
+:host{
+    border-radius: 20px;
+}
+
+mat-dialog-content, h2{
+    text-align: center;
+}
+
+mat-dialog-actions{
+    justify-content: space-around;
+}

@@ -1,10 +1,27 @@
 <h1 class="mat-h1 titulo-lista" class="mat-h1 titulo-painel">
   Painel de Controle
 </h1>
-<app-painel-categorias
-  [listaItens]="listaItens()"
-  [refCategorias]="categorias()"
-></app-painel-categorias>
+<mat-tab-group animationDuration="500ms">
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>list_alt</mat-icon>
+      Lista de Categorias
+    </ng-template>
+    <app-painel-categorias
+      [listaItens]="listaItens()"
+      [refCategorias]="categorias()"
+    ></app-painel-categorias>
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon>history</mat-icon>
+      Histórico
+    </ng-template>
+    <app-painel-historico></app-painel-historico>
+  </mat-tab>
+</mat-tab-group>
+
 <button
   id="btnFinalizar"
   mat-raised-button

@@ -1,0 +1,79 @@
+@use '@angular/material' as mat;
+
+$primary: mat.define-palette(mat.$deep-purple-palette);
+$accent: mat.define-palette(mat.$purple-palette);
+$warn: mat.define-palette(mat.$orange-palette);
+
+$theme: mat.define-light-theme((
+  color: (
+    primary: $primary,
+    accent: $accent,
+    warn: $warn,
+  )
+));
+
+@include mat.all-component-themes($theme);
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+  
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+  
+app-root {
+    display: block;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+  
+.mdc-label {
+    color: whitesmoke;
+}
+  
+.mat-mdc-radio-button {
+    .mdc-radio {
+      .mdc-radio__native-control:enabled:not(:checked) + .mdc-radio__background {
+        .mdc-radio__outer-circle {
+          border-color: whitesmoke;
+        }
+      }
+    }
+}
+
+.mat-mdc-tab-header-pagination-chevron {
+    border-color: white!important;
+}
+
+.mat-mdc-tab .mdc-tab__text-label {
+    color: white!important;
+}
+
+.mat-mdc-tab.mdc-tab--active .mdc-tab__text-label{
+    color: #9e7adf!important;
+}
+
+thead tr {
+  background-color: #4a2860 !important;
+  color: white !important;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #eddbff !important;
+}
+
+tbody tr:hover {
+  background-color: #e0c8f8 !important;
+}
+
+@media (min-width: 1400px) {
+    .mat-mdc-tab .mdc-tab__text-label {
+        font-size: 10px !important;
+    }
+}

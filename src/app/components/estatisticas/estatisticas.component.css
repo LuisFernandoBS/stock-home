@@ -5,6 +5,25 @@
     padding-left: 30px;
     padding-right: 30px;
     overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #996aca #58386e;
+}
+
+:host::-webkit-scrollbar {
+    width: 8px;
+}
+
+:host::-webkit-scrollbar-track {
+    background: #9e0cff;
+}
+
+:host::-webkit-scrollbar-thumb {
+    background-color: #996aca;
+    border-radius: 10px;
+}
+
+:host::-webkit-scrollbar-thumb:hover {
+    background-color: #996aca;
 }
 
 .titulo-painel{
@@ -27,4 +46,12 @@
     width: 23px;
     height: 23px;
     font-size: 23px;
+    margin-right: 4px;
+}
+
+mat-tab-group mat-icon{
+    width: 18px;
+    height: 18px;
+    font-size: 18px;
+    margin-right: 2px;
 }

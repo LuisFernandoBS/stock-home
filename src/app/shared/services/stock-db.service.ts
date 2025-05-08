@@ -34,12 +34,12 @@ export class StockDbService {
     await db.put(this.storeName, { id: idUnico, itens, data, hora });
   }
 
-  async obterHistorico(): Promise<{ data: string; itens: Item[] }[]> {
+  async obterHistorico(): Promise<{ id:string; data: string; itens: Item[]; hora:string; }[]> {
     const db = await this.dbPromise;
     return await db.getAll(this.storeName);
   }
 
-  async obterPorData(data: string): Promise<{ data: string; itens: Item[] } | undefined> {
+  async obterPorData(data: string): Promise<{ id:string; data: string; itens: Item[]; hora:string; } | undefined> {
     const db = await this.dbPromise;
     return await db.get(this.storeName, data);
   }

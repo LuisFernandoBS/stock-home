@@ -128,8 +128,6 @@ export class HomeComponent {
   
     try {
       await this.stockService.salvarLista(idUnico, this.listaItens, dataFormatada, hora);
-  
-      let historico = await this.stockService.obterHistorico();
       this.listaItens = [];
     } catch (error) {
       console.error('Erro ao salvar lista:', error);
@@ -144,7 +142,7 @@ export class HomeComponent {
       this.colunasAbaLista = 5;
       this.abaEstatisticasLateral = false;
       return;     
-    }else if (tamanhoTela < 1400) {
+    }else if (tamanhoTela < 1580) {
       this.colunasTitulo = 5;
       this.colunasAbaEstatisticas = 5;
       this.colunasAbaCadastro = 2;
