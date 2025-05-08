@@ -19,6 +19,12 @@
 - Finalização da lista com salvamento automático no histórico.
 - Armazenamento local com **IndexedDB**, permitindo funcionamento **offline**.
 
+## 🔗 Demonstração
+
+Você pode testar a aplicação em funcionamento no GitHub Pages:
+
+👉 [Acessar versão demonstrativa](https://luisfernandobs.github.io/stock-home/)
+
 ## 🖼️ Interface
 
 A aplicação possui uma interface limpa e responsiva, utilizando os componentes do Angular Material para melhor experiência do usuário.
