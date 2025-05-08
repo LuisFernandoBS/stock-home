@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 import { MensagemComponent } from './components/mensagem/mensagem.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { DISPARAR_MSG } from './shared/tokens/mensagem.token';
@@ -8,7 +9,7 @@ import { DISPARAR_MSG } from './shared/tokens/mensagem.token';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, MensagemComponent],
+  imports: [RouterOutlet, HomeComponent, MensagemComponent],
   providers: [
       {
         provide: DISPARAR_MSG,
