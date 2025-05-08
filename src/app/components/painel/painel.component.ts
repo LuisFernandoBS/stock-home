@@ -11,13 +11,13 @@ import { Item, Categoria } from '../../shared/interfaces/item.interface';
 import { FINALIZAR } from '../../shared/tokens/stock.token';
 
 @Component({
-  selector: 'app-estatisticas',
+  selector: 'app-painel',
   standalone: true,
   imports: [PainelCategoriasComponent,MatIconModule,MatButtonModule,CommonModule,MatTabsModule,PainelHistoricoComponent],
-  templateUrl: './estatisticas.component.html',
-  styleUrl: './estatisticas.component.css'
+  templateUrl: './painel.component.html',
+  styleUrl: './painel.component.css'
 })
-export class EstatisticasComponent {
+export class PainelComponent {
   listaItens = input<Item[]>([]);
   categorias = input<Categoria[]>([]);
 

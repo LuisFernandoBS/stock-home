@@ -1,27 +1,67 @@
-# StockHome
+# 🏠 StockHome
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.5.
+**Versão: 0.1.0 — versão inicial**
 
-## Development server
+**StockHome** é uma aplicação web desenvolvida com **Angular 19**, **TypeScript**, **Angular Material** e **IndexedDB** (via biblioteca `idb`) para facilitar a criação e o gerenciamento de listas de compras, mesmo em modo **offline**.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## 🧩 Tecnologias Utilizadas
 
-## Code scaffolding
+- ✅ Angular 19
+- ✅ TypeScript
+- ✅ Angular Material
+- ✅ IndexedDB (`idb`)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🎯 Funcionalidades
 
-## Build
+- Cadastro de itens com nome, categoria e/ou quantidade (personalizável).
+- Visualização em tempo real da lista atual de compras.
+- Marcação de itens adquiridos com um simples clique.
+- Finalização da lista com salvamento automático no histórico.
+- Armazenamento local com **IndexedDB**, permitindo funcionamento **offline**.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 🖼️ Interface
 
-## Running unit tests
+A aplicação possui uma interface limpa e responsiva, utilizando os componentes do Angular Material para melhor experiência do usuário.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🖼️ Capturas de Tela
 
-## Running end-to-end tests
+### 📋 Lista de Itens
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+![Lista de Completa](docs/tela-completa.png)
 
-## Further help
+### 📜 Histórico de Listas
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![Histórico de Listas](docs/tela-historico.png)
+
+## 💾 Armazenamento Offline
+
+As listas finalizadas são salvas em um histórico local utilizando o `IndexedDB` com a biblioteca `idb`, permitindo ao usuário acessar dados antigos mesmo sem conexão com a internet.
+
+## 🚀 Como Executar
+
+1. **Clone o repositório**:
+
+   ```bash
+   git clone https://github.com/seu-usuario/stockhome.git
+   cd stockhome
+
+   ```
+
+2. **Instale as dependências:**:
+
+   ```
+   npm install
+
+   ```
+
+3. **Execute a aplicação:**:
+
+   ```
+   npm start
+
+   ```
+
+## 📦 Versão
+
+- **Atual:** 0.1.0 (versão inicial)
+- Em desenvolvimento ativo — melhorias e novos recursos virão em breve.

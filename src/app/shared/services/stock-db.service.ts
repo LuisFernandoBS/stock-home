@@ -5,7 +5,7 @@ import { Item } from '../interfaces/item.interface';
 
 interface HistoricoDB extends DBSchema {
   lista: {
-    key: string;  // chave única
+    key: string;
     value: {
       id:string;
       itens: Item[];
@@ -37,11 +37,6 @@ export class StockDbService {
   async obterHistorico(): Promise<{ id:string; data: string; itens: Item[]; hora:string; }[]> {
     const db = await this.dbPromise;
     return await db.getAll(this.storeName);
-  }
-
-  async obterPorData(data: string): Promise<{ id:string; data: string; itens: Item[]; hora:string; } | undefined> {
-    const db = await this.dbPromise;
-    return await db.get(this.storeName, data);
   }
 
   async resetarBanco(): Promise<void> {
